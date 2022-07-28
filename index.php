@@ -12,9 +12,11 @@ require_once __DIR__ . '/UtenteRegistrato.php';
 require_once __DIR__ . '/CiboProdotto.php';
 require_once __DIR__ . '/Croccantini.php';
 require_once __DIR__ . '/Scatolette.php';
+require_once __DIR__ . '/GiocattoloProdotto.php';
+require_once __DIR__ . '/Pallina.php';
 
 $johndoe = new UtenteRegistrato('John','Doe','johndoe@email.com');
-$sheeba = new Scatolette('Sheeba Crunchy',4);
-var_dump($sheeba);
+$pallinaSpugna = new Pallina('Gioco cane pallina spugna',4);
+var_dump($pallinaSpugna);
 
 ?>
