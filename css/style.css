@@ -10,14 +10,12 @@ img {
   display: block;
 }
 
-.utente {
-  margin-top: 30px;
-  width: 50%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.utente div {
+  font-size: 1.2rem;
 }
-.utente h2 {
-  width: 50%;
-  text-align: center;
+.singolo {
+  margin-bottom: 30px;
+}
+h3 {
+  margin-top: 5px;
 }

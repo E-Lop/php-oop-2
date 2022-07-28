@@ -28,6 +28,14 @@ class Utente {
     public function getSelectedProducts() {
         return $this->selectedProducts;
     }
+    // function to display the name of the products in the cart
+    public function selectedProductsList() {
+        $productList = [];
+        foreach($this->selectedProducts as $oneProductName) {
+            $productList [] = $oneProductName->productName;
+        }
+        return implode(', ',$productList);
+    }
 
     public function totalPrice() {
         // Somma dei prezzi dei prodotti scelti
@@ -40,6 +48,10 @@ class Utente {
         $totalAmount -= $totalAmount * $this->discount / 100;
 
         return $totalAmount;
+    }
+
+    public function getInfo() {
+        return "$this->email";
     }
 
 }

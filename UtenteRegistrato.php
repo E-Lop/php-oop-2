@@ -16,8 +16,9 @@ class UtenteRegistrato extends Utente {
         $this->email = $_email;
     }
 
+    // override
     public function getInfo() {
-        return "$this->name $this->lastname - Età: $this->age - Genere: $this->gender";
+        return "$this->name $this->lastname - email: $this->email";
     }
 
     

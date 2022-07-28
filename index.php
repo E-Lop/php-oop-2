@@ -15,13 +15,19 @@ require_once __DIR__ . '/Scatolette.php';
 require_once __DIR__ . '/GiocattoloProdotto.php';
 require_once __DIR__ . '/Pallina.php';
 
+// array degli utenti nello store
+$myUsers = [];
+
 // dati utente anonimo
 $johndoe = new UtenteAnonimo('johndoe@email.com');
+$myUsers [] = $johndoe;
 
 // dati utente registrato
 $frankwhite = new UtenteRegistrato('Frank','White','frankwhite@email.com');
 $frankwhite->gender = 'male';
 $frankwhite->age = '25';
+$myUsers [] = $frankwhite;
+
 
 // dati croccantini
 $royalcanin = new Croccantini('Royal Canin',5);
@@ -44,12 +50,17 @@ $frankwhite->addProduct($pallinaSpugna);
 $frankwhite->addProduct($sheeba);
 
 $johndoe->totalPrice();
+$johndoe->selectedProductsList();
 $frankwhite->totalPrice();
+$frankwhite->selectedProductsList();
 
+
+/* var_dump($myUsers);
 var_dump($johndoe);
 var_dump($johndoe->totalPrice());
 var_dump($frankwhite);
 var_dump($frankwhite->totalPrice());
+var_dump($frankwhite->selectedProductsList()); */
 
 ?>
 
@@ -65,9 +76,18 @@ var_dump($frankwhite->totalPrice());
 <body>
     <main>
         <div class="utente">
-            <h2>Utente</h2>
-            <h2>Registrato?</h2>
-
+            <?php foreach($myUsers as $user) { ?>
+                <div class="singolo">
+                    <!-- dati di ciascun utente -->
+                <h2>Utente</h2>
+                <div><?php echo $user->getInfo(); ?></div>
+                <h3>Lista prodotti in carrello</h3>
+                <div><?php echo $user->selectedProductsList(); ?></div>
+                <!-- prezzo totale dei prodotti in carrello -->
+                <h3>Prezzo totale</h3>
+                <div><?php echo $user->totalPrice() . ' '. 'euro'; ?></div>
+                </div>
+                <?php } ?>
         </div>
     </main>
 </body>
