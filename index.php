@@ -9,8 +9,12 @@ Il pagamento avviene con la carta prepagata che deve contenere un saldo sufficie
 require_once __DIR__ . '/Utente.php';
 require_once __DIR__ . '/UtenteAnonimo.php';
 require_once __DIR__ . '/UtenteRegistrato.php';
+require_once __DIR__ . '/CiboProdotto.php';
+require_once __DIR__ . '/Croccantini.php';
+require_once __DIR__ . '/Scatolette.php';
 
-$johndoe = new UtenteAnonimo('johndoe@email.com');
-var_dump($johndoe);
+$johndoe = new UtenteRegistrato('John','Doe','johndoe@email.com');
+$sheeba = new Scatolette('Sheeba Crunchy',4);
+var_dump($sheeba);
 
 ?>
