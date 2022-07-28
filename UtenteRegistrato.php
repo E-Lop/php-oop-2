@@ -19,6 +19,8 @@ class UtenteRegistrato extends Utente {
     public function getInfo() {
         return "$this->name $this->lastname - Età: $this->age - Genere: $this->gender";
     }
+
+    
 }
 
 ?>

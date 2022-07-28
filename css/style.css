@@ -1,0 +1,23 @@
+/*** RESET ***/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+img {
+  width: 100%;
+  display: block;
+}
+
+.utente {
+  margin-top: 30px;
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.utente h2 {
+  width: 50%;
+  text-align: center;
+}

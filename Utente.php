@@ -14,8 +14,6 @@ class Utente {
     protected $selectedProducts = [];
 
     public function __construct($_email) {
-        $this->name = $_name;
-        $this->lastname = $_lastname;
         $this->email = $_email;
     }
 
@@ -29,6 +27,19 @@ class Utente {
     // function to display the products in the cart
     public function getSelectedProducts() {
         return $this->selectedProducts;
+    }
+
+    public function totalPrice() {
+        // Somma dei prezzi dei prodotti scelti
+        $totalAmount = 0;
+        foreach($this->selectedProducts as $product) {
+            $totalAmount += $product->productPrice;
+        }
+
+        // Leviamo lo sconto
+        $totalAmount -= $totalAmount * $this->discount / 100;
+
+        return $totalAmount;
     }
 
 }
