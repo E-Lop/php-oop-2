@@ -15,6 +15,7 @@ require_once __DIR__ . '/Scatolette.php';
 require_once __DIR__ . '/GiocattoloProdotto.php';
 require_once __DIR__ . '/Pallina.php';
 require_once __DIR__ . '/CartaPrepagata.php';
+require_once __DIR__ . '/NormeSanitarie.php';
 
 // array degli utenti nello store
 $myUsers = [];
@@ -106,15 +107,13 @@ var_dump($frankwhite->selectedProductsList()); */
                     
                         // Stampare in pagina un messaggio per l'utente
                         echo 'L\'operazione non è andata a buon fine, controlla il saldo sulla tua carta e riprova';
-                }
-            ?>
-            </div>
+                        }
+                    ?>
+                    </div>
                 </div>
-                <?php } ?>
+            <?php } ?>
         </div>
-        <div class="pagamenti">
-            
-        </div>
+        
     </main>
 </body>
 </html>

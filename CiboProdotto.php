@@ -1,5 +1,9 @@
 <?php
+
+require_once __DIR__ . '/NormeSanitarie.php';
+
 class CiboProdotto {
+    use NormeSanitarie;
 
     public $productName;
 

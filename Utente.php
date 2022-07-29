@@ -60,7 +60,7 @@ class Utente {
         $totaleDaPagare = $this->totalPrice();
 
         if($cartaPrepagata->saldo < $totaleDaPagare) {
-            throw new Exception("Utente: $this->nome: Saldo non disponibile sulla carta");
+            throw new Exception("Utente: $this->nome: Saldo insufficiente sulla carta");
         } else {
             return 'ok';
         }
