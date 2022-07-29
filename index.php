@@ -14,6 +14,7 @@ require_once __DIR__ . '/Croccantini.php';
 require_once __DIR__ . '/Scatolette.php';
 require_once __DIR__ . '/GiocattoloProdotto.php';
 require_once __DIR__ . '/Pallina.php';
+require_once __DIR__ . '/CartaPrepagata.php';
 
 // array degli utenti nello store
 $myUsers = [];
@@ -49,6 +50,12 @@ $johndoe->addProduct($royalcanin);
 $frankwhite->addProduct($pallinaSpugna);
 $frankwhite->addProduct($sheeba);
 
+// dati carta prepagata
+$cartaPrepagata = new CartaPrepagata;
+
+// dati saldo carta prepagata
+$cartaPrepagata->saldo = 6;
+
 $johndoe->totalPrice();
 $johndoe->selectedProductsList();
 $frankwhite->totalPrice();
@@ -79,15 +86,34 @@ var_dump($frankwhite->selectedProductsList()); */
             <?php foreach($myUsers as $user) { ?>
                 <div class="singolo">
                     <!-- dati di ciascun utente -->
-                <h2>Utente</h2>
-                <div><?php echo $user->getInfo(); ?></div>
-                <h3>Lista prodotti in carrello</h3>
-                <div><?php echo $user->selectedProductsList(); ?></div>
-                <!-- prezzo totale dei prodotti in carrello -->
-                <h3>Prezzo totale</h3>
-                <div><?php echo $user->totalPrice() . ' '. 'euro'; ?></div>
+                    <h2>Utente</h2>
+                    <div><?php echo $user->getInfo(); ?></div>
+                    <h3>Lista prodotti in carrello</h3>
+                    <div><?php echo $user->selectedProductsList(); ?></div>
+                    <!-- prezzo totale dei prodotti in carrello -->
+                    <h3>Prezzo totale</h3>
+                    <div><?php echo $user->totalPrice() . ' '. 'euro'; ?></div>
+                    <h3>Esito pagamento</h3>
+                    <div><?php 
+                        try {
+                            if($user->effettuaPagamento($cartaPrepagata) === 'ok') {
+                                echo "<h2>Grazie per aver completato il tuo acquisto</h2>";
+                            }
+                        } catch(Exception $e) {
+                        // Salvare nel log l'errore (serve al programmatore per tenere
+                        // traccia di ciò che succede nel sito)
+                        error_log($e->getMessage());
+                    
+                        // Stampare in pagina un messaggio per l'utente
+                        echo 'L\'operazione non è andata a buon fine, controlla il saldo sulla tua carta e riprova';
+                }
+            ?>
+            </div>
                 </div>
                 <?php } ?>
+        </div>
+        <div class="pagamenti">
+            
         </div>
     </main>
 </body>

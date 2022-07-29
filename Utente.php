@@ -1,7 +1,9 @@
 <?php
+require_once __DIR__ . '/CartaPrepagata.php';
 
 class Utente {
    
+    
 
     public $email;
     
@@ -52,6 +54,16 @@ class Utente {
 
     public function getInfo() {
         return "$this->email";
+    }
+
+    public function effettuaPagamento($cartaPrepagata) {
+        $totaleDaPagare = $this->totalPrice();
+
+        if($cartaPrepagata->saldo < $totaleDaPagare) {
+            throw new Exception("Utente: $this->nome: Saldo non disponibile sulla carta");
+        } else {
+            return 'ok';
+        }
     }
 
 }
